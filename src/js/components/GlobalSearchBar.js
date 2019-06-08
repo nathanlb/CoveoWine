@@ -25,7 +25,7 @@ export default class GlobalSearchBar extends Component{
 
     render() {
         return(
-            <Navbar sticky="top" style={{backgroundColor: Colors.darkgrey, textAlign: 'center'}}>
+            <Navbar sticky="top" style={{backgroundColor: Colors.darkgrey, textAlign: 'center'}} className="shadow-box-example z-depth-1">
                 {/*<Container>
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>*/}

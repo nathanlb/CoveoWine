@@ -91,7 +91,7 @@ export default class ProductCard extends Component {
                         <Col style={this.infoColStyle}>
                             <Card.Body style={this.cardBodyStyle}>
                                 <Card.Title
-                                    style={{fontSize: '15px', height: '3.5rem', maxHeight: '3.5rem'}}>
+                                    style={{fontSize: '16px', height: '3.5rem', maxHeight: '3.5rem'}}>
                                     {this.props.item.title}
                                 </Card.Title>
                                 <Card.Text 

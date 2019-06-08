@@ -13,7 +13,7 @@ export default class PairingForm extends Component {
     style = {
         
     }
-
+// USE BOOTSTRAP MODAL
     render() {
 
     }

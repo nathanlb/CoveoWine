@@ -8,5 +8,11 @@ export default {
         redWine: "#7a023c",
         whiteWine: "#fff9c1",
         roseWine: "#ffb2b2,",
+    },
+    pastille: {
+        "Aromatique et charnu": "#790233",
+        "Fruité et vif": "#fee40f",
+        "Fruité et généreux": "#f39801",
+        
     }
 }

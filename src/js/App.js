@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import ProductGrid from './components/ProductGrid'
 import FilterBar from './components/FilterBar'
+import Helmet from 'react-helmet';
 
 import Colors from './ColorPalette';
 import GlobalSearchBar from './components/GlobalSearchBar';
@@ -29,28 +30,10 @@ class App extends Component {
               top: '0px',
               position: 'absolute',
             }}>
-            {/* Insert Components Here */}
-            {/*<div 
-              style={{
-                top: "0px",
-                width: "100%",
-                height: "3rem",
-                color: Colors.white,
-                backgroundColor: Colors.darkgrey,
-              }}>
-            <h1 style={{textAlign: "center"}}>Search bar</h1>
-            </div>*/}
+            <Helmet bodyAttributes={{style: 'background-color : #343232'}}/>
             <GlobalSearchBar ></GlobalSearchBar>
             <FilterBar ></FilterBar>
             <ProductGrid ></ProductGrid>
-            {/*<div
-              style={{
-                float: "right",
-                height: "90%",
-                width: "75%",
-                backgroundColor: "purple",
-              }}>
-            </div>*/}
           </div>
       )
   }

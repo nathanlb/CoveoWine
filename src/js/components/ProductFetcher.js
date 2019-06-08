@@ -20,7 +20,7 @@ export default class ProductFetcher extends Component {
 
     constructQuery = () => {
         //var query = "https://cloudplatform.coveo.com/rest/search?access_token=YOUR_TOKEN&q=@tpcepagenomsplitgroup==Merlot"
-        var query = "https://cloudplatform.coveo.com/rest/search?access_token=YOUR_TOKEN&q=@tpcouleur==Blanc"
+        var query = "https://cloudplatform.coveo.com/rest/search?access_token=YOUR_TOKEN&q=@tpcouleur==Rouge"
         var res = query.replace('YOUR_TOKEN', KEYS.APITOKEN)
         console.log(res)
         return res
