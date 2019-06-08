@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import ProductCard from './ProductCard'
+import ProductFetcher from './ProductFetcher'
 import Colors from '../ColorPalette'
 
 export default class ProductGrid extends Component {
@@ -26,11 +27,7 @@ export default class ProductGrid extends Component {
     render() {
         return (
             <div style={this.style}>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
+                <ProductFetcher />
             </div>
         )
     }

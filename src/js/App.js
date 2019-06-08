@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 
 import ProductGrid from './components/ProductGrid'
+import FilterBar from './components/FilterBar'
+
 import Colors from './ColorPalette';
+import GlobalSearchBar from './components/GlobalSearchBar';
 
 class App extends Component {
 
@@ -27,7 +30,7 @@ class App extends Component {
               position: 'absolute',
             }}>
             {/* Insert Components Here */}
-            <div 
+            {/*<div 
               style={{
                 top: "0px",
                 width: "100%",
@@ -35,18 +38,11 @@ class App extends Component {
                 color: Colors.white,
                 backgroundColor: Colors.darkgrey,
               }}>
-              <h1 style={{textAlign: "center"}}>Search bar</h1>
-            </div>
-            <div
-              style={{
-                float: "left",
-                height: "100%",
-                width: "20%",
-                backgroundColor: Colors.khaki,
-                clear: "both",
-              }}>
-            </div>
-            <ProductGrid></ProductGrid>
+            <h1 style={{textAlign: "center"}}>Search bar</h1>
+            </div>*/}
+            <GlobalSearchBar ></GlobalSearchBar>
+            <FilterBar ></FilterBar>
+            <ProductGrid ></ProductGrid>
             {/*<div
               style={{
                 float: "right",
