@@ -2,19 +2,19 @@ import React, {Component} from 'react'
 
 export default class FilterBloc extends Component {
 
-  constructor() { 
-    super()
+    constructor() { 
+        super()
 
-    this.state = { 
+        this.state = { 
+
+        }
+    }
+
+    style = {
+        
+    }
+
+    render() {
 
     }
-  }
-
-  style = {
-      
-  }
-
-  render() {
-
-  }
 }

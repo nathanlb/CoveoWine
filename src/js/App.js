@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 import ProductGrid from './components/ProductGrid'
-import FilterBar from './components/FilterBar'
+import PairingBar from './components/pairing/PairingBar'
 import Helmet from 'react-helmet';
 
 import Colors from './ColorPalette';
@@ -30,9 +30,9 @@ class App extends Component {
               top: '0px',
               position: 'absolute',
             }}>
-            <Helmet bodyAttributes={{style: 'background-color : #343232'}}/>
+            {/*<Helmet bodyAttributes={{style: 'background-color : #343232'}}/>*/}
             <GlobalSearchBar ></GlobalSearchBar>
-            <FilterBar ></FilterBar>
+            <PairingBar ></PairingBar>
             <ProductGrid ></ProductGrid>
           </div>
       )

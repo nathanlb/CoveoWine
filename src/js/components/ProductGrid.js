@@ -16,9 +16,8 @@ export default class ProductGrid extends Component {
 
     style = {
         display: "flex",
-        float: "right",
         height: "100%",
-        width: "80%",
+        overflow: 'hidden',
         backgroundColor: Colors.wine,
         flexWrap: "wrap",
         overflowY: 'auto',

@@ -14,10 +14,11 @@ export default class ProductCard extends Component {
 	}
 
 	cardStyle = {
-        width: '19rem',
+        width: '17.9rem',
         height: '14rem',
         margin: '1rem',
         padding: '5px',
+        minWidth: '17.9rem'
     }
     rowStyle = {
         width: '100%',
