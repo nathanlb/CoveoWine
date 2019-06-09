@@ -5,13 +5,9 @@ import Button from 'react-bootstrap/Button'
 export default class FetchButton extends Component {
 
     constructor() {
-        super();
-    
-        this.handleClick = this.handleClick.bind(this);
-    
-        this.state = {
-            isLoading: false,
-        };
+        super()
+
+        this.handleClick = this.handleClick.bind(this)
     }
 
     style = {
@@ -21,16 +17,11 @@ export default class FetchButton extends Component {
     }
     
     handleClick() {
-        this.setState({ isLoading: true }, () => {
-            // trigger loading callback from prop
-            simulateNetworkRequest().then(() => {
-                this.setState({ isLoading: false });
-            });
-        });
+        this.props.changeState( {fetchResults: true} )
     }
     
       render() {
-        const { isLoading } = this.state;
+        const { isLoading } = this.props
     
         return (
             <div style={this.style}>

@@ -28,12 +28,12 @@ export default class PairingBar extends Component {
     render() {
         return (
             <div style={this.style}>
-                <h1 style={{textAlign:'center', marginTop: '2rem'}}>Pairing Quiz</h1>
-                <FoodSelector size="sm"/>
-                <SugarSlider />
-                <AciditySlider />
-                <PriceSlider />
-                <FetchButton />
+                <h1 style={{textAlign:'center', marginTop: '2rem'}}>Pairing Tool</h1>
+                <FoodSelector size="sm" changeState={ this.props.changeState }/>
+                <SugarSlider changeState={ this.props.changeState }/>
+                <AciditySlider changeState={ this.props.changeState }/>
+                <PriceSlider changeState={ this.props.changeState }/>
+                <FetchButton changeState={ this.props.changeState }/>
             </div>
         )
     }

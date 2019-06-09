@@ -30,7 +30,12 @@ export default class SugarSlider extends Component {
             <div style={this.style}>
                 <p style={{marginBottom: '0rem'}}>Sucre</p>
                 <div style={this.sliderStyle}>
-                    <Slider min={0} defaultValue={50} marks={{ 0:'-', 50:'0', 100:'+' }} step={null} />
+                    <Slider 
+                        min={0} 
+                        defaultValue={50} 
+                        marks={{ 0:'-', 50:'0', 100:'+' }} 
+                        step={null} 
+                        onAfterChange={ value => this.props.changeState({sugar: value}) }/>
                 </div>
             </div>
         )

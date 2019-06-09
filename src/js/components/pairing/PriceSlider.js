@@ -45,6 +45,12 @@ export default class PriceSlider extends Component {
         fontSize: '14px',
     }
 
+    handleChange = (value) => {
+        this.setState( {range: {min: value[0] , max: value[1]}} )
+        var localRange = this.state.range
+        this.props.changeState({range: localRange})
+    }
+
     render() {
         return (
             <div style={this.style}>
