@@ -27,7 +27,7 @@ export default class PairingBar extends Component {
 
     render() {
         return (
-            <div style={this.style}>
+            <div style={this.style} className="shadow-box-example z-depth-2">
                 <h1 style={{textAlign:'center', marginTop: '2rem'}}>Pairing Tool</h1>
                 <FoodSelector size="sm" changeState={ this.props.changeState }/>
                 <SugarSlider changeState={ this.props.changeState }/>
