@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 
 import ProductCard from './ProductCard'
 import KEYS from '../secret'

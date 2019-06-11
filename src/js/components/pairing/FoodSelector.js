@@ -13,8 +13,9 @@ export default class FoodSelector extends Component {
             radio2Checked: false,
         }
 
-        this.handleChange = this.handleChange.bind(this)
         this.inRange = this.inRange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     style = {
@@ -24,6 +25,16 @@ export default class FoodSelector extends Component {
 
     inRange = (x, min, max) => { return ((x-min)*(x-max) <= 0) }
 
+    handleClick = (value) => {
+        if (value === this.state.selected){
+            this.setState({
+                selected: null,
+                radio1Checked: false,
+                radio2Checked: false,  
+            })
+        }
+    }
+
     handleChange = (value) => {
         if (this.inRange(value, 1, 3)){
             this.setState({
@@ -32,15 +43,16 @@ export default class FoodSelector extends Component {
                 radio2Checked: false,  
             })
         }
-        else if (this.inRange(value, 4, 5)){
+        else if (this.inRange(value, 4, 6)){
             this.setState({
                 selected: value,
                 radio1Checked: false,
                 radio2Checked: value,  
             })
         }
+        
         const localSelected = this.state.selected
-        this.props.changeState({food: localSelected})
+        this.props.stateUpdater({food: localSelected})
     }
 
     render() {
@@ -53,14 +65,15 @@ export default class FoodSelector extends Component {
                     size={this.props.size} 
                     style={{paddingBottom: '0.5rem'}}
                     value={this.state.radio1Checked}
+                    onClick={ (value) => this.handleChange() }
                     onChange={ (value) => this.handleChange(value) }>
-                    <ToggleButton variant="info" type="radio" name="radio" value="1">
+                    <ToggleButton variant="unique" type="radio" name="radio" value="1">
                         Viande Rouge
                     </ToggleButton>
-                    <ToggleButton variant="info" type="radio" name="radio" value="2">
+                    <ToggleButton variant="unique" type="radio" name="radio" value="2">
                         Viande Blanche
                     </ToggleButton>
-                    <ToggleButton variant="info" type="radio" name="radio" value="3">
+                    <ToggleButton variant="unique" type="radio" name="radio" value="3">
                         Fruits de mer
                     </ToggleButton>
                 </ToggleButtonGroup>
@@ -70,11 +83,14 @@ export default class FoodSelector extends Component {
                     size={this.props.size}
                     value={this.state.radio2Checked}
                     onChange={ (value) => this.handleChange(value) }>
-                    <ToggleButton variant="info" type="radio" name="radio" value="4">
+                    <ToggleButton variant="unique" type="radio" name="radio" value="4">
                         {"Fromages & Charcuteries"}
                     </ToggleButton>
-                    <ToggleButton variant="info" type="radio" name="radio" value="5">
+                    <ToggleButton variant="unique" type="radio" name="radio" value="5">
                         Desserts
+                    </ToggleButton>
+                    <ToggleButton variant="unique" type="radio" name="radio" value="6">
+                        N/A
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>

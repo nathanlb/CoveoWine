@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import ProductCard from './ProductCard'
 import ProductFetcher from './ProductFetcher'
-import Colors from '../ColorPalette'
+import Colors from '../utils/ColorPalette'
 
 export default class ProductGrid extends Component {
 

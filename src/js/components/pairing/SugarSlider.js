@@ -35,7 +35,7 @@ export default class SugarSlider extends Component {
                         defaultValue={50} 
                         marks={{ 0:'-', 50:'0', 100:'+' }} 
                         step={null} 
-                        onAfterChange={ value => this.props.changeState({sugar: value}) }/>
+                        onAfterChange={ value => this.props.stateUpdater({sugar: value}) }/>
                 </div>
             </div>
         )

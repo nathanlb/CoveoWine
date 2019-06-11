@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PriceSlider from './PriceSlider'
 import SugarSlider from './SugarSlider'
 
-import Colors from '../../ColorPalette'
+import Colors from '../../utils/ColorPalette'
 import FoodSelector from './FoodSelector';
 import AciditySlider from './AciditySlider';
 import FetchButton from './FetchButton';
@@ -29,11 +29,11 @@ export default class PairingBar extends Component {
         return (
             <div style={this.style} className="shadow-box-example z-depth-2">
                 <h1 style={{textAlign:'center', marginTop: '2rem'}}>Pairing Tool</h1>
-                <FoodSelector size="sm" changeState={ this.props.changeState }/>
-                <SugarSlider changeState={ this.props.changeState }/>
-                <AciditySlider changeState={ this.props.changeState }/>
-                <PriceSlider changeState={ this.props.changeState }/>
-                <FetchButton changeState={ this.props.changeState }/>
+                <FoodSelector size="sm" stateUpdater={ this.props.stateUpdater }/>
+                <SugarSlider stateUpdater={ this.props.stateUpdater }/>
+                <AciditySlider stateUpdater={ this.props.stateUpdater }/>
+                <PriceSlider stateUpdater={ this.props.stateUpdater }/>
+                <FetchButton stateUpdater={ this.props.stateUpdater }/>
             </div>
         )
     }

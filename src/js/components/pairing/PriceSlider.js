@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Slider from 'rc-slider';
+import Colors from '../../utils/ColorPalette'
 
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
@@ -45,10 +46,14 @@ export default class PriceSlider extends Component {
         fontSize: '14px',
     }
 
+    rangeStyle = {
+        backgroundColor: Colors.wine
+    }
+
     handleChange = (value) => {
         this.setState( {range: {min: value[0] , max: value[1]}} )
         var localRange = this.state.range
-        this.props.changeState({range: localRange})
+        this.props.stateUpdater({range: localRange})
     }
 
     render() {

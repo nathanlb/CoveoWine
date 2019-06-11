@@ -35,7 +35,7 @@ export default class AciditySlider extends Component {
                         defaultValue={50} 
                         marks={{ 0:'-', 50:'0', 100:'+' }} 
                         step={null}
-                        onAfterChange={ value => this.props.changeState({acidity: value}) } />
+                        onAfterChange={ value => this.props.stateUpdater({acidity: value}) } />
                 </div>
             </div>
         )

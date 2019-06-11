@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Badge from 'react-bootstrap/Badge'
 
-import Colors from '../ColorPalette'
+import Colors from '../utils/ColorPalette'
 
 export default class ProductCard extends Component {
 

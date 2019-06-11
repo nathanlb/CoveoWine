@@ -21,10 +21,10 @@ class App extends Component {
             isLoading: false,
         }
 
-        this.handleStateChange = this.handleStateChange.bind(this)
+        this.stateUpdater = this.stateUpdater.bind(this)
     }
 
-    handleStateChange = (change) => this.setState(change)
+    stateUpdater = (change) => this.setState(change)
 
     style = {
         height: '100%',
@@ -38,7 +38,7 @@ class App extends Component {
             <div style={this.style}>
                 {/*<Helmet bodyAttributes={{style: 'background-color : #343232'}}/>*/}
                 <GlobalSearchBar />
-                <PairingBar changeState={this.handleStateChange} isLoading={this.state.isLoading}/>
+                <PairingBar stateUpdater={this.stateUpdater} isLoading={this.state.isLoading}/>
                 <ProductGrid />
             </div>
         )

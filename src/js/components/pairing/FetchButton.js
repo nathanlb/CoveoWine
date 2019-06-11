@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import Button from 'react-bootstrap/Button'
 
+import Colors from '../../utils/ColorPalette'
+
 export default class FetchButton extends Component {
 
     constructor() {
@@ -17,7 +19,7 @@ export default class FetchButton extends Component {
     }
     
     handleClick() {
-        this.props.changeState( {fetchResults: true} )
+        this.props.stateUpdater( {fetchResults: true} )
     }
     
       render() {
@@ -26,9 +28,10 @@ export default class FetchButton extends Component {
         return (
             <div style={this.style}>
                 <Button
-                    variant="info"
+                    variant="unique"
                     disabled={isLoading}
                     onClick={!isLoading ? this.handleClick : null}
+                    style={{background: `${Colors.wine} !important`}}
                 >
                     {isLoading ? 'Loading…' : 'Trouve moi du vin!'}
                 </Button>
