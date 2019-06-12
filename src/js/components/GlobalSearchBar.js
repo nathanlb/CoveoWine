@@ -1,12 +1,5 @@
 import React, {Component} from 'react'
-
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+import { MDBCol, MDBFormInline, MDBIcon} from 'mdbreact'
 
 import Colors from '../utils/ColorPalette'
 
@@ -23,24 +16,21 @@ export default class GlobalSearchBar extends Component{
         boxShadow: 'none'
     }
 
+    style = {
+      textAlign: 'center',
+      backgroundColor: Colors.darkgrey
+    }
+
     render() {
         return(
-            <Navbar sticky="top" style={{backgroundColor: Colors.darkgrey, textAlign: 'center', height: '3.5rem'}} className="shadow-box-example z-depth-1">
-                {/*<Container>
-                    <Row>
-                        <Col md={{ span: 6, offset: 3 }}>*/}
-                            <Form inline>
-                                <FormControl type="text" placeholder="Search" className="mr-sm-2" style={{width: '40rem'}}/>
-                                <Button 
-                                    variant="dark"
-                                    style={this.buttonStyle}>
-                                    Search
-                                </Button>
-                            </Form>
-                        {/*</Col>
-                    </Row>
-                        </Container>*/}
-            </Navbar>
+            <div style={this.style} className="shadow-box-example z-depth-1" className="row justify-content-center">
+              <MDBCol md="6" style={{height: '3.5rem'}}>
+                  <MDBFormInline className="md-form" style={{margin: '0.5rem'}}>
+                      <MDBIcon icon="search" />
+                      <input className="form-control form-control-sm ml-3 w-100" type="text" placeholder="Search" aria-label="Search" />
+                  </MDBFormInline>
+              </MDBCol>
+            </div>
         )
     }
 }

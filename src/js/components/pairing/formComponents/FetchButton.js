@@ -2,12 +2,16 @@ import React, {Component} from 'react'
 
 import Button from 'react-bootstrap/Button'
 
-import Colors from '../../utils/ColorPalette'
+import Colors from '../../../utils/ColorPalette'
 
 export default class FetchButton extends Component {
 
     constructor() {
         super()
+
+        this.state = {
+            isLoaded: false,
+        }
 
         this.handleClick = this.handleClick.bind(this)
     }
@@ -19,11 +23,12 @@ export default class FetchButton extends Component {
     }
     
     handleClick() {
-        this.props.stateUpdater( {fetchResults: true} )
+        let prevCount = this.props.appState.fetchCount
+        this.props.stateUpdater( {fetchCount: ++prevCount} )
     }
     
       render() {
-        const { isLoading } = this.props
+        const { isLoading } = this.state
     
         return (
             <div style={this.style}>

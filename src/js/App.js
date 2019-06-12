@@ -17,8 +17,7 @@ class App extends Component {
             acidity: 50,
             priceRange: {min: 10, max: 100},
             searchString: null,
-            fetchResults: false,
-            isLoading: false,
+            fetchCount: 0,
         }
 
         this.stateUpdater = this.stateUpdater.bind(this)
@@ -41,7 +40,7 @@ class App extends Component {
                 {/*<Helmet bodyAttributes={{style: 'background-color : #343232'}}/>*/}
                 <GlobalSearchBar />
                 <PairingBar stateUpdater={this.stateUpdater} appState={this.state}/>
-                <ProductGrid appState={this.state}/>
+                <ProductGrid stateUpdater={this.stateUpdater} appState={this.state}/>
             </div>
         )
     }

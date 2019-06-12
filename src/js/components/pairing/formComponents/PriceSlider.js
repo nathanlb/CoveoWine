@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Slider from 'rc-slider';
-import Colors from '../../utils/ColorPalette'
+import Colors from '../../../utils/ColorPalette'
 
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
@@ -55,7 +55,7 @@ export default class PriceSlider extends Component {
     render() {
         return (
             <div style={this.style}>
-                <p style={this.sliderTitleStyle}>Prix : {`$${this.state.range.min} - $${this.state.range.max}`}</p>
+                <p style={this.sliderTitleStyle}>Prix : {`$${this.props.appState.priceRange.min} - $${this.props.appState.priceRange.max}`}</p>
                 <div style={this.sliderStyle}>
                     <Range
                         min={0}

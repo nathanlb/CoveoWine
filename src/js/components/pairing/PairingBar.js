@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import PriceSlider from './PriceSlider'
-import SugarSlider from './SugarSlider'
+import PriceSlider from './formComponents/PriceSlider'
+import SugarSlider from './formComponents/SugarSlider'
 
 import Colors from '../../utils/ColorPalette'
-import FoodSelector from './FoodSelector';
-import AciditySlider from './AciditySlider';
-import FetchButton from './FetchButton';
+import FoodSelector from './formComponents/FoodSelector';
+import AciditySlider from './formComponents/AciditySlider';
+import FetchButton from './formComponents/FetchButton';
 
 export default class PairingBar extends Component {
 
