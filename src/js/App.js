@@ -13,9 +13,9 @@ class App extends Component {
 
         this.state = {
             food: null,
-            sugar: null,
-            acidity: null,
-            priceRange: {},
+            sugar: 50,
+            acidity: 50,
+            priceRange: {min: 10, max: 100},
             searchString: null,
             fetchResults: false,
             isLoading: false,
@@ -24,7 +24,9 @@ class App extends Component {
         this.stateUpdater = this.stateUpdater.bind(this)
     }
 
-    stateUpdater = (change) => this.setState(change)
+    stateUpdater = (change) => {
+      this.setState(change, () => { console.log(this.state)})
+    }
 
     style = {
         height: '100%',
@@ -38,8 +40,8 @@ class App extends Component {
             <div style={this.style}>
                 {/*<Helmet bodyAttributes={{style: 'background-color : #343232'}}/>*/}
                 <GlobalSearchBar />
-                <PairingBar stateUpdater={this.stateUpdater} isLoading={this.state.isLoading}/>
-                <ProductGrid />
+                <PairingBar stateUpdater={this.stateUpdater} appState={this.state}/>
+                <ProductGrid appState={this.state}/>
             </div>
         )
     }

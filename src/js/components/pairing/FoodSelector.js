@@ -4,11 +4,11 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export default class FoodSelector extends Component {
 
-    constructor() { 
-        super()
+    constructor(props) { 
+        super(props)
 
         this.state = { 
-            selected: null,
+            selected: this.props.appState.food,
             radio1Checked: false,
             radio2Checked: false,
         }
@@ -26,6 +26,8 @@ export default class FoodSelector extends Component {
     inRange = (x, min, max) => { return ((x-min)*(x-max) <= 0) }
 
     handleClick = (value) => {
+        console.log(value)
+        console.log(`sel: ${this.state.selected}`)
         if (value === this.state.selected){
             this.setState({
                 selected: null,
@@ -38,21 +40,17 @@ export default class FoodSelector extends Component {
     handleChange = (value) => {
         if (this.inRange(value, 1, 3)){
             this.setState({
-                selected: value,
                 radio1Checked: value,
                 radio2Checked: false,  
             })
         }
         else if (this.inRange(value, 4, 6)){
             this.setState({
-                selected: value,
                 radio1Checked: false,
                 radio2Checked: value,  
             })
         }
-        
-        const localSelected = this.state.selected
-        this.props.stateUpdater({food: localSelected})
+        this.props.stateUpdater({food: value})
     }
 
     render() {
@@ -65,7 +63,6 @@ export default class FoodSelector extends Component {
                     size={this.props.size} 
                     style={{paddingBottom: '0.5rem'}}
                     value={this.state.radio1Checked}
-                    onClick={ (value) => this.handleChange() }
                     onChange={ (value) => this.handleChange(value) }>
                     <ToggleButton variant="unique" type="radio" name="radio" value="1">
                         Viande Rouge

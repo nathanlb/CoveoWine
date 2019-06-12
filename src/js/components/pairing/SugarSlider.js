@@ -6,11 +6,11 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 export default class SugarSlider extends Component {
 
-    constructor() { 
-        super()
+    constructor(props) { 
+        super(props)
 
         this.state = { 
-
+            value: this.props.appState.sugar
         }
     }
 

@@ -6,11 +6,11 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 export default class AciditySlider extends Component {
 
-    constructor() { 
-        super()
+    constructor(props) { 
+        super(props)
 
         this.state = { 
-
+            value: this.props.appState.acidity
         }
     }
 

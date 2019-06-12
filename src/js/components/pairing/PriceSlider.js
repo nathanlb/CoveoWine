@@ -10,14 +10,11 @@ const Range = createSliderWithTooltip(Slider.Range)
 
 export default class PriceSlider extends Component {
 
-    constructor() { 
-        super()
+    constructor(props) { 
+        super(props)
 
         this.state = { 
-            range: {
-                min: 10,
-                max: 100
-            },
+            range: this.props.appState.priceRange,
         }
     }
 
@@ -51,9 +48,8 @@ export default class PriceSlider extends Component {
     }
 
     handleChange = (value) => {
-        this.setState( {range: {min: value[0] , max: value[1]}} )
-        var localRange = this.state.range
-        this.props.stateUpdater({range: localRange})
+        let range = {min: value[0] , max: value[1]}
+        this.props.stateUpdater({priceRange: range})
     }
 
     render() {
@@ -66,7 +62,7 @@ export default class PriceSlider extends Component {
                         max={200}
                         defaultValue={[this.state.range.min, this.state.range.max]}
                         tipFormatter={value => `$${value}`}
-                        onAfterChange={ value => this.setState( {range: {min: value[0] , max: value[1]}} )} 
+                        onAfterChange={ value => this.handleChange(value) } 
                     />
                 </div>
             </div>

@@ -18,7 +18,7 @@ export default class ProductCard extends Component {
         height: '14rem',
         margin: '1rem',
         padding: '5px',
-        minWidth: '17.9rem'
+        minWidth: '17.9rem',
     }
     rowStyle = {
         width: '100%',
@@ -74,7 +74,7 @@ export default class ProductCard extends Component {
     locationString = () => {
         if (this.props.item.raw.tppays === undefined)
             return "Highgarden, Westeros"
-        if (this.props.item.raw.tpregion === undefined)
+        if (this.props.item.raw.tpregion === undefined || `${this.props.item.raw.tpregion}, ${this.props.item.raw.tppays}`.length > 25)
             return this.props.item.raw.tppays
             
         return `${this.props.item.raw.tpregion}, ${this.props.item.raw.tppays}`
@@ -93,7 +93,7 @@ export default class ProductCard extends Component {
                             <Card.Body style={this.cardBodyStyle}>
                                 <Card.Title
                                     style={{fontSize: '16px', height: '3.5rem', maxHeight: '3.5rem'}}>
-                                    {this.props.item.title}
+                                    {(this.props.item.title.length < 67) ? this.props.item.title : `${this.props.item.title.slice(0, (72-this.props.item.title.length))}[...]`}
                                 </Card.Title>
                                 <Card.Text 
                                     className="text-right"

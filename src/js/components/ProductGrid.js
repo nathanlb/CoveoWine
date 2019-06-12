@@ -26,7 +26,7 @@ export default class ProductGrid extends Component {
     render() {
         return (
             <div style={this.style}>
-                <ProductFetcher />
+                <ProductFetcher appState={this.props.appState}/>
             </div>
         )
     }
