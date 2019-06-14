@@ -38,6 +38,36 @@ export default class ProductFetcher extends Component {
 
     url = 'https://platform.cloud.coveo.com/rest/search/v2?organizationId=mycoveocloudv2organizationg8tp8wu3'
 
+    styles = {
+        spinnerWrapper: {
+            position: 'absolute',
+            display: 'block',
+            alignItems: 'center',
+            textAlign: 'center',
+            margin: 'auto',
+            top: '50%',
+            left: 'calc(50% + 10rem)'
+        },
+    }
+
+    sortItems = (items) => {
+        const { ordering } = this.props.appState
+
+        if (ordering != null){
+            switch(ordering){
+                case 0:
+                    return items.sort( (a,b) => { return a.title.localeCompare(b.title) } )
+                case 1:
+                    return items.sort( (a,b) => { return b.title.localeCompare(a.title) } )
+                case 2:
+                    return items.sort( (a,b) => { return a.raw.tpprixnum - b.raw.tpprixnum } )
+                case 3:
+                    return items.sort( (a,b) => { return b.raw.tpprixnum - a.raw.tpprixnum } )
+            }
+        }
+        return items
+    }
+
     componentDidMount() {
       let rawParams = {
           food: this.props.appState.food,
@@ -67,20 +97,9 @@ export default class ProductFetcher extends Component {
           )
     }
 
-    styles = {
-        spinnerWrapper: {
-            position: 'absolute',
-            display: 'block',
-            alignItems: 'center',
-            textAlign: 'center',
-            margin: 'auto',
-            top: '50%',
-            left: 'calc(50% + 10rem)'
-        },
-    }
-
     render() {
-        const { error, items, isLoaded } = this.state;
+        const { error, isLoaded } = this.state;
+        let { items } = this.state
 
         if (error) {
             return <div>Error: {error.message}</div>;
@@ -92,6 +111,7 @@ export default class ProductFetcher extends Component {
             )
         } else {
             if (items.length > 0) {
+                items = this.sortItems(items)
                 return ( items.map( item => ( <ProductCard key={item.uniqueId} item={item} /> ) ) )
             } else {
                 return <div></div>

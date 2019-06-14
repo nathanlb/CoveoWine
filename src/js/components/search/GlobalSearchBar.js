@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { MDBCol, MDBFormInline, MDBIcon } from 'mdbreact'
+import { MDBCol, MDBFormInline, MDBIcon, MDBBtn } from 'mdbreact'
 
 import Colors from '../../utils/ColorPalette'
 
@@ -18,7 +18,7 @@ export default class GlobalSearchBar extends Component{
         },
         col: {
             height: '3.5rem',
-            marginLeft: '1.2rem'
+            marginLeft: '2rem',
         },
         row: {
             margin: '0.5rem',
@@ -33,30 +33,102 @@ export default class GlobalSearchBar extends Component{
             left: '0.5rem',
             height: '2.5rem'
         },
+        alphaButton: {
+            position: 'absolute',
+            top: '0.4rem',
+            right: '2rem',
+        },
+        priceButton: {
+            position: 'absolute',
+            top: '0.4rem',
+            right: '8rem',
+        }
     }
 
-    handleChange = (event) => {
+    alphaButtonText = (ordering) => {
+        if (ordering != null){
+            switch(ordering){
+                case 0:
+                    return 'A-Z ⮝'
+                case 1:
+                    return 'A-Z ⮟'
+            }
+        }
+        return 'A-Z'
+    }
+
+    priceButtonText = (ordering) => {
+        if (ordering != null){
+            switch(ordering){
+                case 2:
+                    return 'Prix ⮝'
+                case 3:
+                    return 'Prix ⮟'
+            }
+        }
+        return 'Prix'
+    }
+
+    handleSearchChange = (event) => {
         let prevCount = this.props.appState.fetchCount
         this.props.stateUpdater({searchString: event.target.value, fetchCount: ++prevCount})
     }
 
+    handleOrderingChange = (buttonName) => {
+        return (e) => {
+            const {ordering} = this.props.appState
+            let prevCount = this.props.appState.fetchCount
+            console.log("order:" + ordering)
+            switch(buttonName) {
+                case 'alpha':
+                    if (ordering >= 1) 
+                        this.props.stateUpdater({ordering: 0})
+                    else 
+                        this.props.stateUpdater({ordering: 1})
+                    break
+                case 'price':
+                    if (ordering < 2 || ordering == 3)
+                        this.props.stateUpdater({ordering: 2})
+                    else 
+                        this.props.stateUpdater({ordering: 3})
+                    break
+            }
+        }
+    }
+
     render() {
         return(
-            <div style={this.styles.wrapper} className="shadow-box-example z-depth-1" className="row justify-content-center">
-                <img src="https://media.glassdoor.com/sqll/454188/saq-squarelogo-1460039711338.png" style={this.styles.image}/>
-                <MDBCol md="6" style={this.styles.col}>
-                    <MDBFormInline className="md-form" style={this.styles.row}>
-                        <MDBIcon icon="search" />
-                        <input 
-                            className="form-control form-control-sm ml-3 w-100" 
-                            type="text" 
-                            placeholder="Search" 
-                            aria-label="Search" 
-                            style={this.styles.input} 
-                            onChange={this.handleChange} 
-                            onKeyDown={ e => { if (e.key === 'Enter') e.preventDefault() } }/>
-                    </MDBFormInline>
-                </MDBCol>
+            <div style={this.styles.wrapper} className="shadow-box-example z-depth-1">
+                <div className="row justify-content-center">
+                    <img src="https://media.glassdoor.com/sqll/454188/saq-squarelogo-1460039711338.png" style={this.styles.image}/>
+                    <MDBCol offset="3" md="6" style={this.styles.col}>
+                        <MDBFormInline className="md-form" style={this.styles.row}>
+                            <MDBIcon icon="search" />
+                            <input 
+                                className="form-control form-control-sm ml-3 w-100" 
+                                type="text" 
+                                placeholder="Search" 
+                                aria-label="Search" 
+                                style={this.styles.input} 
+                                onChange={this.handleSearchChange} 
+                                onKeyDown={ e => { if (e.key === 'Enter') e.preventDefault() } }/>
+                        </MDBFormInline>
+                    </MDBCol>
+                    <MDBBtn
+                        color="dark" 
+                        size="sm" 
+                        style={this.styles.alphaButton}
+                        onClick={ this.handleOrderingChange('price') }>
+                        {this.priceButtonText(this.props.appState.ordering)}
+                    </MDBBtn>
+                    <MDBBtn 
+                        color="dark" 
+                        size="sm" 
+                        style={this.styles.priceButton}
+                        onClick={ this.handleOrderingChange('alpha') }>
+                        {this.alphaButtonText(this.props.appState.ordering)}
+                    </MDBBtn>
+                </div>
             </div>
         )
     }
