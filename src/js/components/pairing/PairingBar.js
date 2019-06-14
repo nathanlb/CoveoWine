@@ -19,7 +19,7 @@ export default class PairingBar extends Component {
 
     style = {
         float: "left",
-        height: "100%",
+        height: "calc(100% - 3.5rem)",
         width: "20rem",
         backgroundColor: Colors.white,
         clear: "both",
@@ -28,7 +28,7 @@ export default class PairingBar extends Component {
     render() {
         return (
             <div style={this.style} className="shadow-box-example z-depth-2">
-                <h1 style={{textAlign:'center', marginTop: '2rem'}}>Pairing Tool</h1>
+                <h1 style={{textAlign:'center', marginTop: '2rem'}}>Appariement</h1>
                 <FoodSelector size="sm" stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
                 <SugarSlider stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
                 <AciditySlider stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>

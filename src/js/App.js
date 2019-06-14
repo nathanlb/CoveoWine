@@ -38,7 +38,7 @@ class App extends Component {
         return (
             <div style={this.style}>
                 {/*<Helmet bodyAttributes={{style: 'background-color : #343232'}}/>*/}
-                <GlobalSearchBar />
+                <GlobalSearchBar stateUpdater={this.stateUpdater}/>
                 <PairingBar stateUpdater={this.stateUpdater} appState={this.state}/>
                 <ProductGrid stateUpdater={this.stateUpdater} appState={this.state}/>
             </div>

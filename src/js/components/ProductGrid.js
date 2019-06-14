@@ -17,11 +17,12 @@ export default class ProductGrid extends Component {
 
     style = {
         display: "flex",
-        height: "100%",
+        height: "calc(100% - 3.5rem)",
         overflow: 'hidden',
         backgroundColor: Colors.greyWhite,
         flexWrap: "wrap",
         overflowY: 'auto',
+        margin: '0px',
     }
 
     getRecommendations = () => {

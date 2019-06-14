@@ -13,52 +13,53 @@ export default class ProductCard extends Component {
 		super()
 	}
 
-	cardStyle = {
-        width: '17.9rem',
-        height: '14rem',
-        margin: '1rem',
-        padding: '5px',
-        minWidth: '17.9rem',
-    }
-    rowStyle = {
-        width: '100%',
-        height: '100%',
-        overflow: 'auto',
-        margin: '0px',
-    }
-    imgColStyle = {
-        height: '100%',
-        padding: '0px',
-        margin: '0px',
-    }
-    infoColStyle = {
-        height: '100%',
-        padding: '0px',
-        margin: '0px',
-    }
-    imgStyle = {
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-    }
-    cardBodyStyle = {
-        padding: '5px',
-    }
-
-    wineBadgeStyles = {
-        'Rouge': {
-            backgroundColor: Colors.wineType.redWine,
-            color: 'white'
+  styles = {
+        card: {
+            width: '17.9rem',
+            height: '14rem',
+            margin: '1rem',
+            padding: '5px',
+            minWidth: '17.9rem',
         },
-        'Blanc': {
-            backgroundColor: Colors.wineType.whiteWine,
-            color: 'black',
+        row: {
+            width: '100%',
+            height: '100%',
+            overflow: 'auto',
+            margin: '0px',
         },
-        'Rosé': {
-            backgroundColor: Colors.wineType.roseWine,
-            color: 'black',
-        }
+        imgCol: {
+            height: '100%',
+            padding: '0px',
+            margin: '0px',
+        },
+        infoCol: {
+            height: '100%',
+            padding: '0px',
+            margin: '0px',
+        },
+        img: {
+            position: 'absolute',
+            height: '100%',
+            width: '100%',
+            objectFit: 'cover',
+        },
+        cardBody: {
+            padding: '5px',
+        },
+        wineBadge: {
+            'Rouge': {
+                backgroundColor: Colors.wineType.redWine,
+                color: 'white'
+            },
+            'Blanc': {
+                backgroundColor: Colors.wineType.whiteWine,
+                color: 'black',
+            },
+            'Rosé': {
+                backgroundColor: Colors.wineType.roseWine,
+                color: 'black',
+            }
+        },
     }
 
     limitedQtyBadge = () => {
@@ -84,48 +85,48 @@ export default class ProductCard extends Component {
 
 	render() {
 		return(
-                <Card style={this.cardStyle} className="shadow-box-example z-depth-3">
-                    <Row style={this.rowStyle}>
-                        <Col xs={4} style={this.imgColStyle}>
-                            <Card.Img style={this.imgStyle} src={this.props.item.raw.tpthumbnailuri} />
-                        </Col>
-                        <Col style={this.infoColStyle}>
-                            <Card.Body style={this.cardBodyStyle}>
-                                <Card.Title
-                                    style={{fontSize: '16px', height: '3.5rem', maxHeight: '3.5rem'}}>
-                                    {(this.props.item.title.length < 67) ? this.props.item.title : `${this.props.item.title.slice(0, (72-this.props.item.title.length))}[...]`}
-                                </Card.Title>
-                                <Card.Text 
-                                    className="text-right"
-                                    style={{fontSize: '22px', marginBottom: '5px'}}>
-                                    {this.props.item.raw.tpprixnormal}
-                                </Card.Text>
-                                <ListGroup variant="flush">
-                                    <ListGroup.Item 
-                                        className="text-right"
-                                        style={{padding: '5px', fontSize: '15px'}}>
-                                        <Badge
-                                            style={this.wineBadgeStyles[this.props.item.raw.tpcouleur]}
-                                            variant="secondary">
-                                            {`${this.props.item.raw.tpcategorie}`}
-                                        </Badge>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        className="text-right"
-                                        style={{padding: '5px', fontSize: '12px'}}>
-                                        {this.locationString()}
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        className="text-right"
-                                        style={{padding: '5px', fontSize: '13px'}}>
-                                        {this.limitedQtyBadge()}
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </Card.Body>
-                        </Col>
-                    </Row>
-                    <a href={this.props.item.clickUri} className="stretched-link"></a>
-                </Card>
+        <Card style={this.styles.card} className="shadow-box-example z-depth-3">
+            <Row style={this.styles.row}>
+                <Col xs={4} style={this.styles.imgCol}>
+                    <Card.Img style={this.styles.img} src={this.props.item.raw.tpthumbnailuri} />
+                </Col>
+                <Col style={this.styles.infoCol}>
+                    <Card.Body style={this.styles.cardBody}>
+                        <Card.Title
+                            style={{fontSize: '16px', height: '3.5rem', maxHeight: '3.5rem'}}>
+                            {(this.props.item.title.length < 67) ? this.props.item.title : `${this.props.item.title.slice(0, (72-this.props.item.title.length))}[...]`}
+                        </Card.Title>
+                        <Card.Text 
+                            className="text-right"
+                            style={{fontSize: '22px', marginBottom: '5px'}}>
+                            {this.props.item.raw.tpprixnormal}
+                        </Card.Text>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item 
+                                className="text-right"
+                                style={{padding: '5px', fontSize: '15px'}}>
+                                <Badge
+                                    style={this.styles.wineBadge[this.props.item.raw.tpcouleur]}
+                                    variant="secondary">
+                                    {`${this.props.item.raw.tpcategorie}`}
+                                </Badge>
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                className="text-right"
+                                style={{padding: '5px', fontSize: '12px'}}>
+                                {this.locationString()}
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                className="text-right"
+                                style={{padding: '5px', fontSize: '13px'}}>
+                                {this.limitedQtyBadge()}
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Card.Body>
+                </Col>
+            </Row>
+            <a href={this.props.item.clickUri} className="stretched-link"></a>
+        </Card>
 		)
 	}
 }

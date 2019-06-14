@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 
 import ProductCard from './ProductCard'
+import Spinner from 'react-bootstrap/Spinner'
 import PairingTool from '../utils/PairingTool'
 
 import KEYS from '../secret'
@@ -18,6 +19,7 @@ export default class ProductFetcher extends Component {
             isLoaded: false,
         }
 
+        this.pairingTool = new PairingTool()
         this.constructQuery = this.constructQuery.bind(this)
     }
 
@@ -34,12 +36,12 @@ export default class ProductFetcher extends Component {
         'Authorization': `Bearer ${KEYS.APITOKEN}`,
     }
 
+    url = 'https://platform.cloud.coveo.com/rest/search/v2?organizationId=mycoveocloudv2organizationg8tp8wu3'
+
     componentDidMount() {
       axios.post(
-          'https://platform.cloud.coveo.com/rest/search/v2?organizationId=mycoveocloudv2organizationg8tp8wu3',
-          {
-              q: '@tpcouleur==Rouge'
-          },
+          this.url,
+          this.pairingTool.getQueryParams({}),
           {
               headers: this.headers
           }).then(
@@ -60,13 +62,29 @@ export default class ProductFetcher extends Component {
           )
     }
 
+    styles = {
+        spinnerWrapper: {
+            position: 'absolute',
+            display: 'block',
+            alignItems: 'center',
+            textAlign: 'center',
+            margin: 'auto',
+            top: '50%',
+            left: 'calc(50% + 10rem)'
+        },
+    }
+
     render() {
         const { error, items, isLoaded } = this.state;
 
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return (
+              <div style={this.styles.spinnerWrapper}>
+                <Spinner animation="border" size='lg' variant="info"/>
+              </div>
+            )
         } else {
             if (items.length > 0) {
                 return ( items.map( item => ( <ProductCard key={item.uniqueId} item={item} /> ) ) )

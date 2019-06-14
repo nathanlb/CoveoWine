@@ -1,10 +1,12 @@
-class PairingTool {
+export default class PairingTool {
 
     constructor() {
-        this.queryParams = {}
+
     }
 
-    getRecommendations() {
-        
+    getQueryParams(params) {
+        return {
+            q: "@tpprixnum>100 @tpcouleur==Rouge"
+        }
     }
 }
