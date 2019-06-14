@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import { MDBCol, MDBFormInline, MDBIcon} from 'mdbreact'
+import { MDBCol, MDBFormInline, MDBIcon } from 'mdbreact'
 
-import Colors from '../utils/ColorPalette'
+import Colors from '../../utils/ColorPalette'
 
 export default class GlobalSearchBar extends Component{
 
@@ -32,11 +32,12 @@ export default class GlobalSearchBar extends Component{
             top: '0.5rem',
             left: '0.5rem',
             height: '2.5rem'
-        }
+        },
     }
 
     handleChange = (event) => {
-      this.props.stateUpdater({searchString: event.target.value})
+        let prevCount = this.props.appState.fetchCount
+        this.props.stateUpdater({searchString: event.target.value, fetchCount: ++prevCount})
     }
 
     render() {
@@ -46,7 +47,14 @@ export default class GlobalSearchBar extends Component{
                 <MDBCol md="6" style={this.styles.col}>
                     <MDBFormInline className="md-form" style={this.styles.row}>
                         <MDBIcon icon="search" />
-                        <input className="form-control form-control-sm ml-3 w-100" type="text" placeholder="Search" aria-label="Search" style={this.styles.input} onChange={this.handleChange}/>
+                        <input 
+                            className="form-control form-control-sm ml-3 w-100" 
+                            type="text" 
+                            placeholder="Search" 
+                            aria-label="Search" 
+                            style={this.styles.input} 
+                            onChange={this.handleChange} 
+                            onKeyDown={ e => { if (e.key === 'Enter') e.preventDefault() } }/>
                     </MDBFormInline>
                 </MDBCol>
             </div>

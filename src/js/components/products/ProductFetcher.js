@@ -3,9 +3,9 @@ import axios from 'axios'
 
 import ProductCard from './ProductCard'
 import Spinner from 'react-bootstrap/Spinner'
-import PairingTool from '../utils/PairingTool'
+import PairingTool from '../../utils/PairingTool'
 
-import KEYS from '../secret'
+import KEYS from '../../secret'
 
 export default class ProductFetcher extends Component {
 
@@ -39,9 +39,14 @@ export default class ProductFetcher extends Component {
     url = 'https://platform.cloud.coveo.com/rest/search/v2?organizationId=mycoveocloudv2organizationg8tp8wu3'
 
     componentDidMount() {
+      let rawParams = {
+          food: this.props.appState.food,
+          range: this.props.appState.priceRange,
+          searchString: this.props.appState.searchString,
+      }
       axios.post(
           this.url,
-          this.pairingTool.getQueryParams({}),
+          this.pairingTool.getQuery(rawParams),
           {
               headers: this.headers
           }).then(

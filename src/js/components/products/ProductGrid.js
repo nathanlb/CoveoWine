@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 import ProductFetcher from './ProductFetcher'
-import Colors from '../utils/ColorPalette'
+import Colors from '../../utils/ColorPalette'
 
 export default class ProductGrid extends Component {
 
@@ -23,6 +23,7 @@ export default class ProductGrid extends Component {
         flexWrap: "wrap",
         overflowY: 'auto',
         margin: '0px',
+        marginLeft: '20rem',
     }
 
     getRecommendations = () => {

@@ -18,33 +18,22 @@ export default class PriceSlider extends Component {
         }
     }
 
-    style = {
-        width: '100%',
-        padding: '1rem',
-    }
-    
-    sliderStyle = {
-        width: '100%',
-        clear: 'both',
-        paddingLeft: '1rem',
-        paddingRight: '1rem',
-    }
-
-    sliderTitleStyle = {
-        position: 'abolute', 
-        float: 'left', 
-        marginBottom: '0.5rem',
-    }
-
-    sliderValueLabelStyle = {
-        textAlign: 'center', 
-        zIndex: '20',
-        marginBottom: '0.5rem',
-        fontSize: '14px',
-    }
-
-    rangeStyle = {
-        backgroundColor: Colors.wine
+    styles = {
+        wrapper: {
+            width: '100%',
+            padding: '1rem',
+        },
+        slider: {
+            width: '100%',
+            clear: 'both',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+        },
+        sliderTitle: {
+            position: 'abolute', 
+            float: 'left', 
+            marginBottom: '0.5rem',
+        },
     }
 
     handleChange = (value) => {
@@ -54,12 +43,12 @@ export default class PriceSlider extends Component {
 
     render() {
         return (
-            <div style={this.style}>
-                <p style={this.sliderTitleStyle}>Prix : {`$${this.props.appState.priceRange.min} - $${this.props.appState.priceRange.max}`}</p>
-                <div style={this.sliderStyle}>
+            <div style={this.styles.wrapper}>
+                <p style={this.styles.sliderTitle}>Prix : {`$${this.props.appState.priceRange.min} - $${this.props.appState.priceRange.max}`}</p>
+                <div style={this.styles.slider}>
                     <Range
                         min={0}
-                        max={200}
+                        max={1000}
                         defaultValue={[this.state.range.min, this.state.range.max]}
                         tipFormatter={value => `$${value}`}
                         onAfterChange={ value => this.handleChange(value) } 

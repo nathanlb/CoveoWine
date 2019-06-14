@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 
-import ProductGrid from './components/ProductGrid'
+import ProductGrid from './components/products/ProductGrid'
 import PairingBar from './components/pairing/PairingBar'
-import Helmet from 'react-helmet';
+import ParingModal from './components/pairing/PairingModal'
 
-import GlobalSearchBar from './components/GlobalSearchBar';
+import GlobalSearchBar from './components/search/GlobalSearchBar';
 
 class App extends Component {
 
@@ -18,6 +18,7 @@ class App extends Component {
             priceRange: {min: 10, max: 100},
             searchString: null,
             fetchCount: 0,
+            showModal: true,
         }
 
         this.stateUpdater = this.stateUpdater.bind(this)
@@ -34,12 +35,20 @@ class App extends Component {
         position: 'absolute',
     }
 
+    pairingTool = () => {
+        const {showModal} = this.state
+        if (showModal)
+            return <ParingModal show={true} stateUpdater={this.stateUpdater} appState={this.state}/>
+        else 
+            return <PairingBar stateUpdater={this.stateUpdater} appState={this.state}/>
+    }
+
     render() {
         return (
             <div style={this.style}>
                 {/*<Helmet bodyAttributes={{style: 'background-color : #343232'}}/>*/}
-                <GlobalSearchBar stateUpdater={this.stateUpdater}/>
-                <PairingBar stateUpdater={this.stateUpdater} appState={this.state}/>
+                <GlobalSearchBar stateUpdater={this.stateUpdater} appState={this.state}/>
+                { this.pairingTool() }
                 <ProductGrid stateUpdater={this.stateUpdater} appState={this.state}/>
             </div>
         )

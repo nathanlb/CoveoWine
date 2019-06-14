@@ -1,11 +1,7 @@
 import React, {Component} from 'react'
-import PriceSlider from './formComponents/PriceSlider'
-import SugarSlider from './formComponents/SugarSlider'
 
 import Colors from '../../utils/ColorPalette'
-import FoodSelector from './formComponents/FoodSelector';
-import AciditySlider from './formComponents/AciditySlider';
-import FetchButton from './formComponents/FetchButton';
+import PairingForm from './PairingForm'
 
 export default class PairingBar extends Component {
 
@@ -13,27 +9,48 @@ export default class PairingBar extends Component {
         super()
 
         this.state = {
-
+            show: false,
         }
     }
 
-    style = {
-        float: "left",
-        height: "calc(100% - 3.5rem)",
-        width: "20rem",
-        backgroundColor: Colors.white,
-        clear: "both",
+    styles = {
+        show: {
+            float: "left",
+            height: "calc(100% - 3.5rem)",
+            width: "20rem",
+            backgroundColor: Colors.white,
+            clear: "both",
+            transitionDuration: '1s',
+        },
+        hide: {
+            float: "left",
+            height: "calc(100% - 3.5rem)",
+            width: "20rem",
+            backgroundColor: Colors.white,
+            clear: "both",
+            marginLeft: '-20rem',
+        }
+    }
+
+    getStyle = () => {
+        const {show} = this.state
+        if (show)
+            return this.styles.show
+        else
+            return this.styles.hide
+    }
+
+    componentDidMount() {
+      setTimeout(() => this.setState({show: true}), 400)
     }
 
     render() {
         return (
-            <div style={this.style} className="shadow-box-example z-depth-2">
-                <h1 style={{textAlign:'center', marginTop: '2rem'}}>Appariement</h1>
-                <FoodSelector size="sm" stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
-                <SugarSlider stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
-                <AciditySlider stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
-                <PriceSlider stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
-                <FetchButton stateUpdater={ this.props.stateUpdater } appState={this.props.appState}/>
+            <div style={this.getStyle()} className="shadow-box-example z-depth-2">
+                <PairingForm
+                    stateUpdater={this.props.stateUpdater}
+                    appState={this.props.appState}
+                    type="sidebar"/>
             </div>
         )
     }

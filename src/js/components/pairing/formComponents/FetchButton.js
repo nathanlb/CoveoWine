@@ -24,23 +24,30 @@ export default class FetchButton extends Component {
     
     handleClick() {
         let prevCount = this.props.appState.fetchCount
-        this.props.stateUpdater( {fetchCount: ++prevCount} )
+        switch (this.props.type){
+            case 'sidebar':
+                this.props.stateUpdater( {fetchCount: ++prevCount} )
+                break
+            case 'modal':
+                this.props.stateUpdater( {fetchCount: ++prevCount, showModal: false} )
+                break
+        }
     }
     
-      render() {
-        const { isLoading } = this.state
-    
-        return (
-            <div style={this.style}>
-                <Button
-                    variant="unique"
-                    disabled={isLoading}
-                    onClick={!isLoading ? this.handleClick : null}
-                    style={{background: `${Colors.wine} !important`}}
-                >
-                    {isLoading ? 'Loading…' : 'Trouve moi du vin!'}
-                </Button>
-            </div>
-        );
-      }
+    render() {
+      const { isLoading } = this.state
+  
+      return (
+          <div style={this.style}>
+              <Button
+                  variant="unique"
+                  disabled={isLoading}
+                  onClick={!isLoading ? this.handleClick : null}
+                  style={{background: `${Colors.wine} !important`}}
+              >
+                  {isLoading ? 'Loading…' : 'Trouve moi du vin!'}
+              </Button>
+          </div>
+      );
+    }
 }
