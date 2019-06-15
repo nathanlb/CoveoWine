@@ -105,7 +105,7 @@ export default class ProductCard extends Component {
                             <ListGroup.Item 
                                 className="text-right"
                                 style={{padding: '5px', fontSize: '15px'}}>
-                                <Badge variant="default">{(this.props.item.raw.tpcepagenomsplitgroup != undefined) ? this.props.item.raw.tpcepagenomsplitgroup.split(/[\s;]+/)[0] : ""}</Badge>
+                                <Badge variant="default" className="mr-1">{(this.props.item.raw.tpcepagenomsplitgroup != undefined) ? this.props.item.raw.tpcepagenomsplitgroup.split(/[\s;]+/)[0] : ""}</Badge>
                                 <Badge variant="secondary">{this.props.item.raw.tpcategorie}</Badge>
                             </ListGroup.Item>
                             <ListGroup.Item
