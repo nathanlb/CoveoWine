@@ -105,7 +105,6 @@ export default class SearchBar extends Component{
                     <img src="https://media.glassdoor.com/sqll/454188/saq-squarelogo-1460039711338.png" style={this.styles.image}/>
                     <MDBCol offset="3" md="6" style={this.styles.col}>
                         <MDBFormInline className="md-form" style={this.styles.row}>
-                            <MDBIcon icon="search" />
                             <input 
                                 className="form-control form-control-sm ml-3 w-100" 
                                 type="text" 
