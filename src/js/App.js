@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import ProductGrid from './components/products/ProductGrid'
 import PairingBar from './components/pairing/PairingBar'
 import ParingModal from './components/pairing/PairingModal'
-import GlobalSearchBar from './components/search/GlobalSearchBar'
+import SearchBar from './components/search/SearchBar'
 import Helmet from 'react-helmet'
 
 import Colors from './utils/ColorPalette'
@@ -50,7 +50,7 @@ class App extends Component {
         return (
             <div style={this.style}>
                 <Helmet bodyAttributes={{style: `background-color : ${Colors.greyWhite}`}}/>
-                <GlobalSearchBar stateUpdater={this.stateUpdater} appState={this.state}/>
+                <SearchBar stateUpdater={this.stateUpdater} appState={this.state}/>
                 { this.pairingTool() }
                 <ProductGrid stateUpdater={this.stateUpdater} appState={this.state}/>
             </div>

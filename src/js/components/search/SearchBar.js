@@ -3,7 +3,7 @@ import { MDBCol, MDBFormInline, MDBIcon, MDBBtn } from 'mdbreact'
 
 import Colors from '../../utils/ColorPalette'
 
-export default class GlobalSearchBar extends Component{
+export default class SearchBar extends Component{
 
     constructor() {
         super()

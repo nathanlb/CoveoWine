@@ -40,7 +40,7 @@ export default class PairingTool {
     }
 
     getQuery(rawParams) {
-        let params = ["@tpcategorie=Vin*"]
+        let params = ["@tpcategorie=Vin*", "@tpprixnum"]
         params = params.concat(this.searchParams(rawParams.searchString))
         params = params.concat(this.foodParams(rawParams.food))
         params = params.concat(this.priceParams(rawParams.range))
@@ -49,7 +49,7 @@ export default class PairingTool {
         return {
             q: query ,
             aq: "",
-            numberOfResults: 12,
+            numberOfResults: 24,
         }
     }
 }

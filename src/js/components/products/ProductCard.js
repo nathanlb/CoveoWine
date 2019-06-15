@@ -24,7 +24,7 @@ export default class ProductCard extends Component {
         row: {
             width: '100%',
             height: '100%',
-            overflow: 'auto',
+
             margin: '0px',
         },
         imgCol: {
@@ -93,13 +93,13 @@ export default class ProductCard extends Component {
                 <Col style={this.styles.infoCol}>
                     <Card.Body style={this.styles.cardBody}>
                         <Card.Title
-                            style={{fontSize: '16px', height: '3.5rem', maxHeight: '3.5rem'}}>
+                            style={{fontSize: '16px', height: '4rem', maxHeight: '4rem'}}>
                             {(this.props.item.title.length < 67) ? this.props.item.title : `${this.props.item.title.slice(0, (72-this.props.item.title.length))}[...]`}
                         </Card.Title>
                         <Card.Text 
                             className="text-right"
                             style={{fontSize: '22px', marginBottom: '5px'}}>
-                            {this.props.item.raw.tpprixnormal}
+                            {`$${this.props.item.raw.tpprixnum.toFixed(2)}`}
                         </Card.Text>
                         <ListGroup variant="flush">
                             <ListGroup.Item 
