@@ -1,26 +1,41 @@
 export default class PairingTool {
 
     constructor() {
-
+        this.tags = {
+            category: [],
+            cepage: [],
+            price: [],
+        }
     }
 
     foodParams(food) {
         var params = []
+        var category = []
+        var cepage = []
         switch(food){
             case '1': 
-                params.push("@tpcategorie=\"Vin rouge\"")
+                category = category.concat(['\"Vin rouge\"'])
                 break
             case '2':
+                cepage = cepage.concat(['\"Sauvignon Blanc\"','\"Chenin Blanc\"','\"Riesling\"','\"Chardonnay\"','\"Brachetto\"','\"Schiava\"','\"Pinot Noir\"','\"Grenache\"'])
                 break
             case '3':
-                params.push("@tpcategorie=\"Vin blanc\"")
+                category = category.concat(["\"Vin blanc\"","\"Vin rose\"","\"Mousseux\""])
+                cepage = cepage.concat(['\"Pinot gris\"','\"Chenin Blanc\"','\"Riesling\"','\"Chardonnay\"','\"Sauvignon Blanc\"','\"Muscadet\"','\"Chablis\"','\"Soave\"'])
                 break
             case '4':
+                category = category.concat(["\"Vin blanc\"","\"Vin rouge\""])
+                cepage = cepage.concat(['\"Shiraz\"','\"Chenin Blanc\"','\"Riesling\"','\"Chardonnay\"','\"Pinot noir\"','\"Merlot\"'])
                 break
             case '5':
-                params.push("@tpcategorie=\"Vin de dessert\"")
+                category = category.concat(['\"Vin de dessert\"'])
                 break
         }
+        if (category.length > 0)
+            params.push(`@tpcategorie==(${category.join(',')})`)
+        if (cepage.length > 0)
+            params.push(`@tpcepagenomsplitgroup==(${cepage.join(',')})`)
+
         return params
     }
 
@@ -40,7 +55,7 @@ export default class PairingTool {
     }
 
     getQuery(rawParams) {
-        let params = ["@tpcategorie=Vin*", "@tpprixnum"]
+        let params = ["@tpcategorie=Vin*"]
         params = params.concat(this.searchParams(rawParams.searchString))
         params = params.concat(this.foodParams(rawParams.food))
         params = params.concat(this.priceParams(rawParams.range))

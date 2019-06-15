@@ -15,7 +15,7 @@ export default class ProductCard extends Component {
 
   styles = {
         card: {
-            width: '17.9rem',
+            width: '19rem',
             height: '14rem',
             margin: '1rem',
             padding: '5px',
@@ -94,7 +94,7 @@ export default class ProductCard extends Component {
                     <Card.Body style={this.styles.cardBody}>
                         <Card.Title
                             style={{fontSize: '16px', height: '4rem', maxHeight: '4rem'}}>
-                            {(this.props.item.title.length < 67) ? this.props.item.title : `${this.props.item.title.slice(0, (72-this.props.item.title.length))}[...]`}
+                            {(this.props.item.title.length <= 70) ? this.props.item.title : `${this.props.item.title.substring(0, 70)}...`}
                         </Card.Title>
                         <Card.Text 
                             className="text-right"
@@ -105,11 +105,8 @@ export default class ProductCard extends Component {
                             <ListGroup.Item 
                                 className="text-right"
                                 style={{padding: '5px', fontSize: '15px'}}>
-                                <Badge
-                                    style={this.styles.wineBadge[this.props.item.raw.tpcouleur]}
-                                    variant="secondary">
-                                    {`${this.props.item.raw.tpcategorie}`}
-                                </Badge>
+                                <Badge variant="default">{(this.props.item.raw.tpcepagenomsplitgroup != undefined) ? this.props.item.raw.tpcepagenomsplitgroup.split(/[\s;]+/)[0] : ""}</Badge>
+                                <Badge variant="secondary">{this.props.item.raw.tpcategorie}</Badge>
                             </ListGroup.Item>
                             <ListGroup.Item
                                 className="text-right"

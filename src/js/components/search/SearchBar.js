@@ -13,8 +13,9 @@ export default class SearchBar extends Component{
         wrapper: {
             textAlign: 'center',
             width: '100%',
-            marginLeft: '0px',
+            margin: '0px',
             backgroundColor: Colors.darkgrey,
+            overflowX: 'hidden',
         },
         col: {
             height: '3.5rem',
@@ -37,36 +38,37 @@ export default class SearchBar extends Component{
             position: 'absolute',
             top: '0.4rem',
             right: '2rem',
+            width: '90px',
         },
         priceButton: {
             position: 'absolute',
             top: '0.4rem',
-            right: '8rem',
-        }
+            right: '8.5rem',
+            width: '90px',
+            marginRight: '0.2rem'
+        },
     }
 
-    alphaButtonText = (ordering) => {
+    alphaButtonIcon = (ordering) => {
         if (ordering != null){
             switch(ordering){
                 case 0:
-                    return 'A-Z ⮝'
+                    return <MDBIcon icon="caret-up" className="ml-1" />
                 case 1:
-                    return 'A-Z ⮟'
+                    return <MDBIcon icon="caret-down" className="ml-1" />
             }
         }
-        return 'A-Z'
     }
 
-    priceButtonText = (ordering) => {
+    priceButtonIcon = (ordering) => {
         if (ordering != null){
             switch(ordering){
                 case 2:
-                    return 'Prix ⮝'
+                    return <MDBIcon icon="caret-up" className="ml-1" />
                 case 3:
-                    return 'Prix ⮟'
+                    return <MDBIcon icon="caret-down" className="ml-1" />
             }
         }
-        return 'Prix'
     }
 
     handleSearchChange = (event) => {
@@ -119,14 +121,14 @@ export default class SearchBar extends Component{
                         size="sm" 
                         style={this.styles.alphaButton}
                         onClick={ this.handleOrderingChange('price') }>
-                        {this.priceButtonText(this.props.appState.ordering)}
+                        Prix {this.priceButtonIcon(this.props.appState.ordering)}
                     </MDBBtn>
                     <MDBBtn 
                         color="dark" 
                         size="sm" 
                         style={this.styles.priceButton}
                         onClick={ this.handleOrderingChange('alpha') }>
-                        {this.alphaButtonText(this.props.appState.ordering)}
+                        A-Z {this.alphaButtonIcon(this.props.appState.ordering)}
                     </MDBBtn>
                 </div>
             </div>

@@ -68,7 +68,7 @@ export default class FoodSelector extends Component {
                         Viande Rouge
                     </ToggleButton>
                     <ToggleButton variant="unique" type="radio" name="radio" value="2">
-                        Viande Blanche
+                        Volaille
                     </ToggleButton>
                     <ToggleButton variant="unique" type="radio" name="radio" value="3">
                         Fruits de mer
