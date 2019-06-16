@@ -76,7 +76,12 @@ export default class ProductFetcher extends Component {
       }
       axios.post(
           this.url,
-          this.pairingTool.getQuery(rawParams),
+          {
+              q: this.pairingTool.getQuery(rawParams) ,
+              aq: "",
+              numberOfResults: 100,
+              fieldsToExclude: ['tppagebody']
+          },
           {
               headers: this.headers
           }).then(

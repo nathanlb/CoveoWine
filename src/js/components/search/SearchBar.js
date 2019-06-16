@@ -16,6 +16,7 @@ export default class SearchBar extends Component{
             margin: '0px',
             backgroundColor: Colors.darkgrey,
             overflowX: 'hidden',
+            overflowY: 'hidden',
         },
         col: {
             height: '3.5rem',
@@ -108,7 +109,7 @@ export default class SearchBar extends Component{
                             <input 
                                 className="form-control form-control-sm ml-3 w-100" 
                                 type="text" 
-                                placeholder="Search" 
+                                placeholder="Filtres additionels" 
                                 aria-label="Search" 
                                 style={this.styles.input} 
                                 onChange={this.handleSearchChange} 

@@ -1,19 +1,15 @@
 import React, {Component} from 'react'
 
-import PriceSlider from './formComponents/PriceSlider'
-import SugarSlider from './formComponents/SugarSlider'
-import FoodSelector from './formComponents/FoodSelector';
-import AciditySlider from './formComponents/AciditySlider';
-import FetchButton from './formComponents/FetchButton';
+import PriceSlider from './form_components/PriceSlider'
+import SugarSlider from './form_components/SugarSlider'
+import FoodSelector from './form_components/FoodSelector';
+import AciditySlider from './form_components/AciditySlider';
+import FetchButton from './form_components/FetchButton';
 
 export default class PairingForm extends Component {
 
     constructor() { 
         super()
-
-        this.state = {
-
-        }
     }
 
     styles = {

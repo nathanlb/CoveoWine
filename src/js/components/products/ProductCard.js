@@ -15,7 +15,7 @@ export default class ProductCard extends Component {
 
   styles = {
         card: {
-            width: '19rem',
+            width: '20rem',
             height: '14rem',
             margin: '1rem',
             padding: '5px',

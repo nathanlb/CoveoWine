@@ -8,10 +8,6 @@ export default class PairingModal extends Component {
 
     constructor() { 
         super()
-
-        this.state = {
-
-        }
     }
 
     style = {

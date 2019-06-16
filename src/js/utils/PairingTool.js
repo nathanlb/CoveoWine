@@ -17,6 +17,7 @@ export default class PairingTool {
                 category = category.concat(['\"Vin rouge\"'])
                 break
             case '2':
+                category = category.concat(['\"Vin rouge\"',"\"Vin blanc\"","\"Vin rose\""])
                 cepage = cepage.concat(['\"Sauvignon Blanc\"','\"Chenin Blanc\"','\"Riesling\"','\"Chardonnay\"','\"Brachetto\"','\"Schiava\"','\"Pinot Noir\"','\"Grenache\"'])
                 break
             case '3':
@@ -48,8 +49,11 @@ export default class PairingTool {
 
     searchParams(searchString) {
       if (searchString != null) {
-        if (searchString.length != 0)
-          return [`${searchString}*`]
+        if (searchString.length != 0){
+          const searchArray = searchString.split(' ')
+          const searchParams = searchArray.map( x => `${x}*`)
+          return searchParams
+        }
       }
       return []
     }
@@ -61,10 +65,6 @@ export default class PairingTool {
         params = params.concat(this.priceParams(rawParams.range))
         let query = params.join(' ')
         console.log(query)
-        return {
-            q: query ,
-            aq: "",
-            numberOfResults: 24,
-        }
+        return query
     }
 }
