@@ -64,7 +64,7 @@ Not great. Time constraints, a focus on functionality, and neglect to use a TDD 
 As of now the pairing recomendation algorithm is mostly faked. Don't hold me accountable if you're disapointed by the recommendation results and your fancy dinner party is ruined. Also, the acidity and sugar slider, while functional, do nothing to influence the recommendations.
 
 ### File Structure and Separation of Component Facets
-
+Separation of each components functional and presentational elements into separate files would have been ideal for testing, maintainability and adherance to industry best practices. However, having it them all in the same file did help with readability and quality of life during development. Given none of the components are overly complex, component scope and their corresponding files are still of a respectable size.
 
 ### Thoughts
 - This was a blast!
