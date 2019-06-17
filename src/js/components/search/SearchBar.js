@@ -107,7 +107,7 @@ export default class SearchBar extends Component{
                             <input 
                                 className="form-control form-control-sm ml-3 w-100" 
                                 type="text" 
-                                placeholder="Filtres additionels" 
+                                placeholder="Filtres additionnels" 
                                 aria-label="Search" 
                                 style={this.styles.input} 
                                 onChange={this.handleSearchChange} 
