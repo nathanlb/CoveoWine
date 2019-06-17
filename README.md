@@ -5,7 +5,7 @@ This web app was built as part of Coveo's [Front End Challenge](https://github.c
 ## Installation
 
 ```bash
-git clone https://github.com/nathanlb/CoveoWine
+git clone https://github.com/nathanlb/CoveoWine.git
 cd ./CoveoWine
 npm install
 ```
