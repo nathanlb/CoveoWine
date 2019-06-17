@@ -80,8 +80,6 @@ export default class SearchBar extends Component{
     handleOrderingChange = (buttonName) => {
         return (e) => {
             const {ordering} = this.props.appState
-            let prevCount = this.props.appState.fetchCount
-            console.log("order:" + ordering)
             switch(buttonName) {
                 case 'alpha':
                     if (ordering >= 1) 

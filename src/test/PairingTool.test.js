@@ -6,7 +6,7 @@ import PairingTool from '../js/utils/PairingTool'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe("PairingModal", () => {
+describe("PairingTool", () => {
   test("instantiates", () => {
     const pTool = new PairingTool()
     expect(pTool !== null).toBe(true)
@@ -43,14 +43,14 @@ describe("PairingModal", () => {
   test("returns food params for given code", () => {
     const mockFoodCode = 1
     const pTool = new PairingTool()
-    const foodParams = pTool.searchParams(mockFoodCode)
+    const foodParams = pTool.foodParams(mockFoodCode)
     expect(foodParams === ['\"Vin rouge\"'])
   })
 
   test("returns food params for given code (invalid)", () => {
     const mockFoodCode = 0
     const pTool = new PairingTool()
-    const foodParams = pTool.searchParams(mockFoodCode)
+    const foodParams = pTool.foodParams(mockFoodCode)
     expect(foodParams === [])
   })
 
@@ -64,7 +64,8 @@ describe("PairingModal", () => {
       }
     }
     const pTool = new PairingTool()
-    const queryString = pTool.searchParams(mockRawParams)
-    expect(foodParams === ["@tpcategorie=Vin*", "NOT @tppagebody", "search string*"])
+    const queryString = pTool.getQuery(mockRawParams)
+      
+    expect(queryString === `@tpcategorie=Vin* NOT @tppagebody search* string* \"Vin rouge\" @tpprixnum>=${mockRawParams.range.min} @tpprixnum<=${mockRawParams.range.max}`)
   })
 })

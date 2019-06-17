@@ -80,13 +80,11 @@ export default class ProductFetcher extends Component {
               q: this.pairingTool.getQuery(rawParams) ,
               aq: "",
               numberOfResults: 100,
-              fieldsToExclude: ['tppagebody']
           },
           {
               headers: this.headers
           }).then(
               (response) => {
-                console.log(response)
                 this.setState({
                     items: response.data.results,
                     response: response,

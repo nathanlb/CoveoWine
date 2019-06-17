@@ -64,7 +64,6 @@ export default class PairingTool {
         params = params.concat(this.foodParams(rawParams.food))
         params = params.concat(this.priceParams(rawParams.range))
         let query = params.join(' ')
-        console.log(query)
         return query
     }
 }

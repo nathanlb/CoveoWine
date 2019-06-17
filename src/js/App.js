@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import ProductGrid from './components/products/ProductGrid'
 import PairingBar from './components/pairing/PairingBar'
-import ParingModal from './components/pairing/PairingModal'
+import PairingModal from './components/pairing/PairingModal'
 import SearchBar from './components/search/SearchBar'
 import Helmet from 'react-helmet'
 
@@ -28,7 +28,7 @@ class App extends Component {
     }
 
     stateUpdater = (change) => {
-      this.setState(change, () => { console.log(this.state)})
+      this.setState(change)//, () => { console.log(this.state)})
     }
 
     style = {
@@ -41,7 +41,7 @@ class App extends Component {
     pairingTool = () => {
         const {showModal} = this.state
         if (showModal)
-            return <ParingModal show={true} stateUpdater={this.stateUpdater} appState={this.state}/>
+            return <PairingModal show={true} stateUpdater={this.stateUpdater} appState={this.state}/>
         else 
             return <PairingBar stateUpdater={this.stateUpdater} appState={this.state}/>
     }

@@ -15,7 +15,6 @@ export default class FoodSelector extends Component {
 
         this.inRange = this.inRange.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleClick = this.handleClick.bind(this)
     }
 
     style = {
@@ -24,18 +23,6 @@ export default class FoodSelector extends Component {
     }
 
     inRange = (x, min, max) => { return ((x-min)*(x-max) <= 0) }
-
-    handleClick = (value) => {
-        console.log(value)
-        console.log(`sel: ${this.state.selected}`)
-        if (value === this.state.selected){
-            this.setState({
-                selected: null,
-                radio1Checked: false,
-                radio2Checked: false,  
-            })
-        }
-    }
 
     handleChange = (value) => {
         if (this.inRange(value, 1, 3)){

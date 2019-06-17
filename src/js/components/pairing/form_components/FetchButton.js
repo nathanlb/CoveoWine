@@ -9,10 +9,6 @@ export default class FetchButton extends Component {
     constructor() {
         super()
 
-        this.state = {
-            isLoaded: false,
-        }
-
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -35,17 +31,13 @@ export default class FetchButton extends Component {
     }
     
     render() {
-      const { isLoading } = this.state
-  
       return (
           <div style={this.style}>
               <Button
                   variant="unique"
-                  disabled={isLoading}
-                  onClick={!isLoading ? this.handleClick : null}
-                  style={{background: `${Colors.wine} !important`}}
+                  onClick={this.handleClick}
               >
-                  {isLoading ? 'Loading…' : 'Trouve moi du vin!'}
+                  Trouve moi du vin!
               </Button>
           </div>
       );
